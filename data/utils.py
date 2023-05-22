@@ -10,6 +10,14 @@ def preprocess(sentence):
   processed_string = re.sub(r'[.,?!$%^:;]', '', lowercase_string)
     
   return processed_string
+  
+  
+  
+def preprocess_nolower(sentence):
+
+  processed_string = re.sub(r'[.,?!$%^:;]', '', lowercase_string)
+    
+  return processed_string
 
 def get_dictionnary(df):
   dictionnary=[]
