@@ -42,14 +42,15 @@ def ruin_grammar(sentence, dictionnary):
   
 
 class ValidationAccuracyCallback(Callback):
-    def __init__(self, validation_data):
+    def __init__(self, validation_data,model):
         super(ValidationAccuracyCallback, self).__init__()
         self.validation_data = validation_data
+        self.model = model
     
     def on_epoch_end(self, epoch, logs=None):
         X_test, y_test = self.validation_data
         y_test = y_test.reshape((y_test.shape[0],1))
-        val_predictions = np.round(model.predict(X_test))
+        val_predictions = np.round(self.model.predict(X_test))
         val_accuracy = (y_test == val_predictions).mean()
         print(y_test.shape,val_predictions.shape)
         print(f'Validation Accuracy: {val_accuracy:.4f}')
