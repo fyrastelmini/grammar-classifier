@@ -26,17 +26,17 @@ class Classifier(tf.keras.Model):
         return output
         
 def get_ml_model(name):
-	  if name == "RF":
-	    return RandomForestClassifier(max_depth=16, random_state=0)
-	  elif name == "NB":
+	  if name == "Random Forest":
+	    return RandomForestClassifier(max_depth=8, random_state=0)
+	  elif name == "Naive Bayes Classifier":
 	    return GaussianNB()
-	  elif name == "LR":
+	  elif name == "Logitic Regression Classifier":
 	    return LogisticRegression()
-	  elif name == "SVC":
+	  elif name == "Support Vector Machine":
 	    return SVC()
-	  elif name == "GB":
+	  elif name == "Gradient Boost":
 	    return GradientBoostingClassifier(n_estimators=100, learning_rate=1.0, max_depth=24, random_state=0)
-	  elif name == "MLP":
+	  elif name == "Multilayer Perceptron":
 	    return MLPClassifier()
 	  else:
 	    return 'invalid name: '+name
