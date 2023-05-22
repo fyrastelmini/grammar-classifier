@@ -8,13 +8,13 @@ from sklearn.neural_network import MLPClassifier
 
 
 class Classifier(tf.keras.Model):
-    def __init__(self, input_sz, embedding_dim):
+    def __init__(self, input_sz, embedding_dim, lstm_units, filters, kernel):
         super(Classifier, self).__init__()
         self.embedding = tf.keras.layers.Embedding(input_sz, embedding_dim)
-        self.conv1d = tf.keras.layers.Conv1D(256, 8, activation='relu')
+        self.conv1d = tf.keras.layers.Conv1D(filters, kernel, activation='relu')
         self.layer_norm = tf.keras.layers.LayerNormalization()
         self.dropout = tf.keras.layers.Dropout(0.5)
-        self.lstm = tf.keras.layers.LSTM(28)
+        self.lstm = tf.keras.layers.LSTM(lstm_units)
         self.dense = tf.keras.layers.Dense(1, activation='sigmoid')
 
     def call(self, x):
