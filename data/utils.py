@@ -1,5 +1,7 @@
 import re
 import random
+from tensorflow.keras.callbacks import Callback
+import numpy as np
 
 def preprocess(sentence):
 
@@ -37,3 +39,17 @@ def ruin_grammar(sentence, dictionnary):
   words.insert(idx4,list(dictionnary)[idx3])
   out="".join([i+" " for i in words])
   return(out[0:-1])
+  
+
+class ValidationAccuracyCallback(Callback):
+    def __init__(self, validation_data):
+        super(ValidationAccuracyCallback, self).__init__()
+        self.validation_data = validation_data
+    
+    def on_epoch_end(self, epoch, logs=None):
+        X_test, y_test = self.validation_data
+        y_test = y_test.reshape((y_test.shape[0],1))
+        val_predictions = np.round(model.predict(X_test))
+        val_accuracy = (y_test == val_predictions).mean()
+        print(y_test.shape,val_predictions.shape)
+        print(f'Validation Accuracy: {val_accuracy:.4f}')
