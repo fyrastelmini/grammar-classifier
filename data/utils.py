@@ -52,5 +52,4 @@ class TestAccuracyCallback(Callback):
         y_test = y_test.reshape((y_test.shape[0],1))
         test_predictions = np.round(self.model.predict(X_test))
         test_accuracy = (y_test == test_predictions).mean()
-        print(y_test.shape,test_predictions.shape)
-        print(f'Test Accuracy: {val_accuracy:.4f}')
+        print(f'Test Accuracy: {test_accuracy:.4f}')
