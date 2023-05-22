@@ -26,7 +26,7 @@ class Classifier(tf.keras.Model):
         return output
         
 def get_ml_model(name):
-	  if name == "RF:
+	  if name == "RF":
 	    return RandomForestClassifier(max_depth=16, random_state=0)
 	  elif name == "NB":
 	    return GaussianNB()
