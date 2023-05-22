@@ -1,6 +1,6 @@
-from transformers import BertModel, BertTokenizer
+from transformers import BertTokenizer
 import pandas as pd
-
+import numpy as np
 
 def make_dataset(df,padding_size=28):
 	tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
