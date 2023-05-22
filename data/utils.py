@@ -15,7 +15,7 @@ def preprocess(sentence):
   
 def preprocess_nolower(sentence):
 
-  processed_string = re.sub(r'[.,?!$%^:;]', '', lowercase_string)
+  processed_string = re.sub(r'[.,?!$%^:;]', '', sentence)
     
   return processed_string
 
